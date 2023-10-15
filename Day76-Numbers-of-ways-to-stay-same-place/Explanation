@@ -1,0 +1,43 @@
+Problem 1269 - Number of Ways to Stay in the Same Place After Some Steps
+
+Problem Statement:
+
+You are given a 1D array of length arrLen representing a city. You start at the index 0 of the array,
+and you have steps to move. Each step you can move to an adjacent cell in the array, i.e., you can move left, 
+stay in the current cell, or move right. Your goal is to find the number of different ways to reach the index 
+0 after taking exactly steps steps.
+
+Intuition:
+
+This problem can be solved using dynamic programming. The intuition behind the solution is to find the number 
+of ways to reach the index 0 after taking steps steps, considering the possible movements (left, stay, or right) 
+at each step. By memoizing the results for each subproblem (i.e., the number of ways to reach a specific position 
+with a certain number of steps left), you can optimize the computation.
+
+Approach:
+
+~ Create a 2D array dp with dimensions [steps+1][arrLen] to memoize the results. Initialize all elements to -1, 
+  which represents that the subproblem has not been solved yet.
+
+~ Define a helper function helper(steps, len, arrlen) to calculate the number of ways to reach the position len 
+  in the array after taking steps steps. This function will be a recursive function with memoization.
+
+~ In the helper function, implement the following base cases:
+
+~ If len is 0 and steps is 0, return 1, indicating that you have reached the desired position.
+~ If len is negative, equal to arrlen, or steps is negative, return 0, indicating that it's not possible to reach the desired position.
+~ If len is greater than steps, return 0, as you can't reach len with the remaining steps.
+~ Check if the result for the subproblem (len, steps) is already memoized (i.e., dp[len][steps] != -1). If it is, return the memoized result.
+
+~ Initialize a variable ways to 0, which will store the total number of ways to reach the desired position.
+
+~ Iterate through three possible movements at each step: move left, stay in the current cell, and move right 
+  (represented by x = -1, x = 0, and x = 1, respectively). For each movement, calculate the number of ways by calling helper(steps-1, len+x, arrlen), and add it to the ways.
+
+~ Take the modulo mod of ways with 1e9 + 7 to ensure that the result stays within the defined range.
+
+~ Memoize the result by setting dp[len][steps] to ways.
+
+~ Finally, return ways, which represents the number of ways to reach the desired position with steps steps.
+
+~ In the numWays function, initialize the dp array, and call the helper function to calculate the result for the initial state.
