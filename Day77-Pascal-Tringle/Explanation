@@ -1,0 +1,24 @@
+Problem 119: Pascal's Triangle II
+
+Problem Statement:
+
+Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+
+Intuition:
+
+Pascal's Triangle is a mathematical concept where each number in the triangle is the sum of the 
+two numbers directly above it. To find the kth row of the triangle, we can use the property that 
+each element can be calculated from the previous row's elements.
+
+Approach:
+
+~ You initialize a vector row of size rowIndex + 1, and set all elements to 1. This initializes the first row of Pascal's Triangle.
+~ You then loop from i = 0 to i = rowIndex, where i represents the current row you're constructing.
+~ In the inner loop, starting from j = i - 1 and going down to j = 1, you update the elements in the row vector to calculate the values of the current row based on the values of the previous row.
+~ The line row[j] = row[j] + row[j - 1]; is where you calculate each element in the current row by summing the elements directly above and to the left of it.
+~ Finally, you return the row vector, which now contains the kth row of Pascal's Triangle.
+
+Complexity (Based on Your Code):
+
+Time complexity: O(n^2) as you need to calculate each element in the kth row.
+Space complexity: O(n) as you store the kth row in a list.
