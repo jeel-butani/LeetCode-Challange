@@ -1,0 +1,32 @@
+Problem 1361 - Validate Binary Tree Nodes:
+
+Problem Statement:
+
+You are given n nodes labeled from 0 to n - 1 and an array leftChild and an array rightChild representing the left and right children of each node in a binary tree.
+The binary tree is represented by a list of nodes, where leftChild[i] and rightChild[i] are the two children of node i. The root of the tree is the node labeled 0.
+Return true if the binary tree is a valid binary tree and false otherwise.
+
+Intuition:
+
+To determine if the given arrays leftChild and rightChild represent a valid binary tree, we need to ensure that:
+
+Each node has at most one parent (in-degree of nodes is at most 1).
+There is exactly one node with an in-degree of 0 (the root node).
+The binary tree is connected (all nodes are reachable from the root).
+There are no cycles in the tree.
+We can perform a bottom-up traversal of the tree and keep track of the in-degrees of nodes and whether we have found the root. If we encounter any invalid condition, we can return false.
+
+Approach:
+
+~ Initialize an array inDegree to keep track of the in-degrees of nodes, and initialize a variable root to -1.
+~ Iterate through the leftChild array and the rightChild array. For each child, increment its in-degree in the inDegree array. If any node's in-degree becomes 2, return false (condition 1).
+~ Iterate through all nodes (0 to n-1). For a valid binary tree, there should be exactly one node with an in-degree of 0 (the root node). If root is not -1 (indicating that a root node has already been found), return false (condition 2).
+~ If no root node is found (i.e., root is still -1), return false.
+~ Ensure that the binary tree is connected (condition 3). To do this, count the number of nodes reachable from the root node using a depth-first search (DFS) or breadth-first search (BFS) and compare it to n. If they are not equal, return false.
+~ Check for cycles (condition 4). If you encounter a node that you have already visited during the DFS or BFS traversal, return false.
+~If all conditions are met, return true, indicating that the input represents a valid binary tree.
+
+Complexity:
+
+Time complexity: O(n)
+Space complexity: O(1)
