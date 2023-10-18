@@ -1,0 +1,42 @@
+Problem 2050. Parallel Courses III:
+
+Problem Statement:
+
+You are given a set of courses numbered from 1 to n, with prerequisites represented as a list of relations. Each relation is a pair of courses, 
+where the first course is a prerequisite for the second course. You are also given a list of times it takes to complete each course.
+
+Your task is to find the minimum time it would take to complete all the courses following these rules:
+
+You can start a course only when all of its prerequisites are completed.
+You can take courses in parallel. In each time step, you can choose any course that is ready to be taken (i.e., all its prerequisites are completed).
+You need to return the minimum time to complete all the courses.
+
+Intuition:
+
+To find the minimum time to complete all the courses, you can use dynamic programming to explore all possible choices for taking courses while keeping track of the prerequisites and their completion times.
+
+Approach:
+
+~ Create a directed graph to represent the prerequisites. In this graph, each node represents a course, and directed edges represent prerequisites.
+
+~ Create a memoization array (memo) to store the minimum time it takes to complete each course. Initialize it with -1 to indicate that the values are not calculated yet.
+
+~ Implement a recursive function, divideAndConquerDfs(course, graph, time, memo), where course is the current course, graph is the prerequisite graph, time is the list of times to complete each course, and memo is the memoization array.
+
+~ In the divideAndConquerDfs function:
+  1. If memo[course] is not -1, return the memoized value.
+  2. Initialize maxTime to 0, which will store the maximum time among the prerequisites of the current course.
+  3. For each course that depends on the current course (i.e., in the graph, find all courses with edges pointing to the current course), calculate the maximum time using recursion and update maxTime.
+  4. Set memo[course] to maxTime + time[course - 1], where course - 1 is used because course numbering starts from 1.
+  5. Return memo[course].
+
+~ Initialize minTime to 0, which will store the minimum time to complete all courses.
+
+~ Iterate through all courses from 1 to n and, for each course, calculate the minimum time using the divideAndConquerDfs function and update minTime to the maximum of the current minTime and the result of the function.
+
+~ Return minTime as the minimum time to complete all courses.
+
+Complexity:
+
+Time complexity: O(n^2) due to the recursion and memoization.
+Space complexity: O(n) for the memoization array and the graph.
