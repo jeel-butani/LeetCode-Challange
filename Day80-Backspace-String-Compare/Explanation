@@ -1,0 +1,23 @@
+844. Backspace String Compare
+
+Problem Statement:
+
+You are given two strings S and T. You want to determine if after applying a series of backspace characters to both strings, they become equal. A backspace character is represented by the '#' character. When a '#' is encountered, the previous character is deleted.
+
+Return true if the two strings become equal, and false otherwise.
+
+Intuition:
+
+To solve this problem, simulate the backspace operations by creating new strings that represent the final state of the original strings after applying the backspaces. Then, compare these final strings to determine if they are equal.
+
+Approach
+
+~ Initialize two pointers, n and m, at the end of both strings.
+~ Simulate backspace characters ('#') by decrementing these pointers and tracking the number of backspaces.
+~ Compare characters at these pointers while considering backspaces, and move the pointers accordingly.
+~ If the characters match and both pointers reach the beginning of both strings, return true; otherwise, return false.
+
+Complexity Analysis:
+
+Time complexity: O(N), where N is the length of the longer of the two input strings. This is because iterate through both strings once.
+Space complexity: O(1), as use a constant amount of extra space for variables (n, m, todel) regardless of the input string lengths.
