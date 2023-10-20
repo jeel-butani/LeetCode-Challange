@@ -1,0 +1,30 @@
+341. Flatten Nested List Iterator
+
+Problem Statement:
+
+Given a nested list of integers and need to create an iterator to flatten it.
+The nested list is represented as a list of NestedInteger, where NestedInteger is an abstract class that may contain either an integer or a nested list of NestedInteger.
+
+Implement the NestedIterator class:
+
+~ NestedIterator(vector<NestedInteger> &nestedList): Initializes the iterator.
+~ int next(): Returns the next integer in the nested list.
+~ bool hasNext(): Returns true if there are still integers in the nested list, or false otherwise.
+
+Intuition:
+
+~ To flatten the nested list, we can use a stack-based approach. In the constructor, we initialize a stack and push all elements of the input nestedList onto the stack in reverse order. We ensure that the integers are pushed onto the stack first. The hasNext method checks whether there are more integers in the stack, and the next method retrieves the next integer.
+
+Approach:
+
+~ Initialize a stack to hold NestedInteger objects.
+~ In the constructor NestedIterator(vector<NestedInteger> &nestedList), iterate through nestedList in reverse order and push its elements onto the stack.
+~ Implement the next method to pop the top element from the stack and return its integer value.
+~ Implement the hasNext method to:
+    ~ Check if the stack is empty. If empty, return false.
+    ~ If the stack is not empty, keep popping elements and pushing nested lists onto the stack until an integer is found or the stack becomes empty. This ensures that the iterator is always positioned at the next integer.
+
+Complexity Analysis:
+
+Time complexity: O(N) for both next and hasNext methods, where N is the total number of elements in the nested list.
+Space complexity: O(N) for the stack, as we use additional space to store elements from the input list.
