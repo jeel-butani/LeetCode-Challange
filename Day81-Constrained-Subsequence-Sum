@@ -1,0 +1,25 @@
+1425 - Constrained Subsequence Sum
+
+Problem Statement:
+
+~ You are given an array nums and an integer k. You need to find the maximum sum of any non-empty subsequence of the array such that no two elements of the subsequence are at most k positions apart.
+
+Intuition:
+
+~ To find the maximum sum of a subsequence with the given constraint, we can use a dynamic programming approach. We maintain a deque (double-ended queue) to keep track of the maximum sum ending at the current index, while ensuring that elements within k positions are not included in the sum.
+
+Approach:
+
+~ Initialize a variable res to store the maximum sum and a deque q to keep track of the maximum sum ending at the current index.
+~ Iterate through the elements of the nums array.
+~ For each element, add the maximum sum ending at the previous index to the current element (nums[i] += !q.isEmpty() ? q.peek() : 0). This ensures that we include the maximum sum from the previous subsequence while   maintaining the constraint.
+~ Update res with the maximum of the current res and the current element (res = Math.max(res, nums[i]).
+~ Remove elements from the back of the deque (q) if they are smaller than the current element, ensuring that the deque is in decreasing order.
+~ If the current element is greater than 0, add it to the deque to consider it in future subsequence calculations (q.offer(nums[i])).
+~ If the current index is at least k, and the first element in the deque equals the element at i - k, remove it from the deque to satisfy the constraint (q.poll()).
+~ Return res as the maximum sum of a constrained subsequence.
+
+Complexity:
+
+Time complexity: O(n) where n is the length of the nums array.
+Space complexity: O(k) due to the deque q.
