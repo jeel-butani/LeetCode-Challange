@@ -1,0 +1,24 @@
+1793. Maximum Score of a Good Subarray
+
+Problem Statement:
+
+~ Given an array of integers, nums, and an integer k. Task is to find the maximum score of a good subarray. A good subarray is defined as a subarray of nums where the minimum element in the subarray is greater than or equal to the length of the subarray.
+~ Implement the maximumScore method to calculate and return the maximum score of a good subarray.
+
+Intuition:
+
+~ The problem involves finding the maximum score of a good subarray. To achieve this, Need to iterate through the elements of nums and expand a subarray around the chosen index k. Expand the subarray to the left and right while keeping track of the minimum element in the subarray. The score of a good subarray is calculated as the minimum element in the subarray multiplied by the length of the subarray. The maximum score among all possible subarrays should be returned.
+
+Approach:
+
+~ Initialize n as the length of the input array nums, left and right as k, ans as nums[k], and currMin as nums[k].
+~ Use a while loop to expand the subarray. Continue as long as left is greater than 0 or right is less than n - 1.
+~ In each iteration of the loop, compare the elements to the left and right of the subarray. Choose the direction that leads to a smaller element. Update currMin with the minimum element found so far.
+~ Calculate the score for the current subarray by multiplying currMin by the length of the subarray (right - left + 1).
+~ Update ans with the maximum score found so far.
+~ Return ans as the maximum score of a good subarray.
+
+Complexity Analysis:
+
+~ Time complexity: O(N), where N is the total number of elements in the input array nums. This is because we iterate through the array once.
+~ Space complexity: O(1), as we use only a constant amount of additional space for variables.
