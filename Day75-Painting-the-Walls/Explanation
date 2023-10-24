@@ -1,6 +1,6 @@
 # 2742. Painting the Walls:
 
-<h3>Problem Statement:<>
+Problem Statement:
 
 You are given a row of walls to paint, where each wall has a cost associated with painting it and a time it takes to paint it. You can start from either end of the row and paint one wall at a time, moving towards the other end. However, there is a constraint on the maximum time you have to complete the painting.
 
