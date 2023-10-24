@@ -1,0 +1,18 @@
+342. Power of Four
+
+Problem Statement:
+~ Given an integer n, the task is to determine if it is a power of 4. A power of 4 is a positive integer that can be expressed in the form 4^k for some non-negative integer k. Implement the isPowerOfFour method to check if n is a power of 4 and return true or false accordingly.
+
+Approach:
+
+Code uses a recursive approach to check if an integer n is a power of 4. Here's how it works:
+
+~ If n is less than or equal to 0, return false. Negative numbers and zero cannot be powers of 4.
+~ If n is equal to 1, return true. This is because 4^0 is 1, and 1 is considered a power of 4.
+~ If n is not 1 and not equal to 0, check if it is divisible by 4 (n % 4 == 0). If it is divisible by 4, call the isPowerOfFour function recursively with n / 4. This recursively checks if n / 4 is a power of 4.
+~ If n is not 1, not equal to 0, and not divisible by 4, return false. In this case, n is not a power of 4.
+
+Complexity Analysis:
+
+Time complexity: O(log_4(n)). In the worst case, the function will be called recursively approximately log_4(n) times, where n is the input integer.
+Space complexity: O(log_4(n)) for the function call stack, as each recursive call uses a constant amount of space.
