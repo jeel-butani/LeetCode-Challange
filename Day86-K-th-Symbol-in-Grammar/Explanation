@@ -1,0 +1,14 @@
+779. K-th Symbol in Grammar
+
+Problem: This code is designed to find the value at the K-th position in a specific sequence, following a set of rules.
+
+Approach: It uses a recursive function that works as follows:
+
+~ If n (a parameter) is 1, it returns 0.
+~ If k is even, it calls itself with n-1 and k/2. If the result is 0, it returns 1; otherwise, it returns 0.
+~ If k is odd, it calls itself with n-1 and (k+1)/2. If the result is 0, it returns 0; otherwise, it returns 1.
+  
+Complexity:
+
+Time complexity: O(log K) because the problem size decreases by half in each recursive call.
+Space complexity: O(log K) due to the recursive function calls.
