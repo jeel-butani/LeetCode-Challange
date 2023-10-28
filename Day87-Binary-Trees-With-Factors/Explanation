@@ -1,0 +1,37 @@
+Problem 823: Binary Trees With Factors
+
+Problem Statement:
+
+Given an array of positive integers, arr, where each element represents a unique integer. Need to determine the number of different binary trees can create using the elements of arr.
+
+The following rules apply:
+
+~ Each element in arr should be used as the value of a node in the binary tree.
+~ If arr[i] is used as the value of a node, you can choose any two integers, arr[j] and arr[k], such that arr[j] * arr[k] == arr[i], and place them as the left and right children of the node with the value arr[i]. The order of the children does not matter.
+~ You can build multiple different binary trees using the same set of values from arr.
+Implement the numFactoredBinaryTrees method to find and return the number of different binary trees that can be constructed using the elements of arr.
+
+Intuition:
+
+To solve this problem, you can use dynamic programming. You'll maintain a count of binary trees that can be formed with each element in arr. You'll iterate through the elements in arr, and for each element, you'll check how many different binary trees can be formed with it as the root node. This involves checking for pairs of factors in the array.
+
+Approach:
+
+~ Sort the arr array in ascending order. This is necessary for efficient factor checking.
+~ Initialize an array dp of the same length as arr to store the count of binary trees that can be formed using each element.
+~ Initialize a HashMap called factorCount to keep track of the count of factors for each element in arr.
+~ Initialize a variable totalTrees to keep track of the total number of binary trees.
+~ Iterate through each element arr[i] in the sorted array:
+  ~ Initialize dp[i] to 1 because a single node is a valid binary tree.
+  ~ For each index j from 0 to i - 1, do the following:
+    ~ Check if arr[i] % arr[j] == 0 (i.e., arr[j] is a factor of arr[i]).
+    ~ If arr[j] is a factor, check if arr[i] / arr[j] is present in arr. If it is, this means you can form a binary tree using arr[i] as the root, arr[j] as the left child, and arr[i] / arr[j] as the right child.
+    ~ If arr[i] / arr[j] is in arr, add dp[j] * dp[map[i / arr[j]]] to dp[i]. This accounts for the different combinations of left and right children.
+  ~ Update the totalTrees by adding dp[i].
+  ~ Update the factorCount for arr[i] by incrementing it.
+~ Return the totalTrees as the result.
+
+Complexity Analysis:
+
+Time complexity: O(N^2), where N is the number of elements in the arr array. The nested loop for checking factors contributes to the quadratic time complexity.
+Space complexity: O(N), where N is the number of elements in the arr array. This space is used for the dp array and the factorCount HashMap.
