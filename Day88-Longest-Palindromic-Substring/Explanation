@@ -1,0 +1,24 @@
+Problem Statement:
+
+Given a string, find the longest palindromic substring within it.
+
+Intuition:
+
+Explore all possible substrings of the given string and check if each one is a palindrome. It does this by using two nested loops to consider all pairs of starting and ending indices, checking if the characters at those indices are the same, and then validating if the substring between them is a palindrome using the check function.
+
+Approach:
+
+~ Create a function check that takes three arguments: i (starting index), j (ending index), and s (the input string). This function will check if the substring from index i to j in the string s is a palindrome. It     does this by comparing characters from both ends and moving inwards while checking for equality.
+~ Initialize two variables, maxlen and start, to keep track of the length of the longest palindromic substring found so far and its starting index.
+~ Use two nested loops to iterate over all possible pairs of starting and ending indices of substrings in the input string s. The outer loop, i, represents the starting index, and the inner loop, j, represents the     ending index.
+~ For each pair of indices, check if the characters at s[i] and s[j] are the same. If they are, call the check function with i and j to determine if the substring between these indices is a palindrome.
+~ If the substring is a palindrome and its length is greater than the current maxlen, update maxlen and start to the length of the new palindrome and its starting index.
+~ After both loops have finished, return the substring of the input string s starting at index start and having a length of maxlen. This will be the longest palindromic substring.
+
+Complexity Analysis:
+
+Time Complexity: O(n^3)
+The two nested loops iterate through all possible pairs of starting and ending indices in the string. This results in a time complexity of O(n^3), where 'n' is the length of the input string. This is because for each starting index, the inner loop explores all possible ending indices.
+
+Space Complexity: O(1)
+The space complexity is O(1) because the algorithm uses a constant amount of extra space regardless of the input size. It only uses a few integer variables to keep track of the maximum length and starting index.
