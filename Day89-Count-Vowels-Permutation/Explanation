@@ -1,0 +1,30 @@
+1220. Count Vowels Permutation
+
+Problem Statement:
+
+Given an integer 'n', you are tasked with counting how many strings of length 'n' can be formed under the following rules:
+
+Each character is a lowercase vowel ('a', 'e', 'i', 'o', 'u').
+Each vowel 'a' may only be followed by an 'e'.
+Each vowel 'e' may only be followed by an 'a' or an 'i'.
+Each vowel 'i' may not be followed by another 'i'.
+Each vowel 'o' may only be followed by an 'i' or a 'u'.
+Each vowel 'u' may only be followed by an 'a'.
+Since the answer may be too large, return it modulo 10^9 + 7.
+
+Intuition:
+
+Dynamic programming to count the number of valid strings of length 'n' based on the rules provided. The problem can be broken down into smaller subproblems, where we calculate the counts of strings ending with each vowel ('a', 'e', 'i', 'o', 'u') and then combine these counts to obtain the total count of valid strings of length 'n'. The algorithm efficiently computes these counts while considering the given constraints and returns the result modulo 10^9 + 7.
+
+Approach:
+
+~ Initialize five long variables a, e, i, o, and u to 1. These variables represent the counts of strings ending with each vowel ('a', 'e', 'i', 'o', 'u').
+~ Initialize a long variable mod to 10^9 + 7. This is the modulo value used to prevent integer overflow.
+~ Iterate from 'j' = 1 to 'n-1' to compute the counts for strings of length 'n'.
+~ For each iteration, calculate the next counts for strings ending with each vowel based on the rules provided. Update the variables anext, enext, inext, onext, and unext accordingly.
+~ Update the variables a, e, i, o, and u with their corresponding next counts (e.g., a = anext, e = enext, etc.).
+~ After the loop, calculate the total count of valid strings of length 'n' by adding a, e, i, o, and u together, and return this count modulo 'mod'.
+
+Complexity Analysis:
+Time Complexity: This algorithm has a time complexity of O(n) since it iterates through the values from 1 to 'n'.
+Space Complexity: The space complexity is O(1) because it uses a constant amount of extra space regardless of the input size. It only stores a few long variables and constants.
