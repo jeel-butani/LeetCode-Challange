@@ -1,0 +1,26 @@
+458. Poor Pigs
+
+Problem Statement:
+Given n pigs, k minutes to determine which bucket contains poison, and a certain number of tests. The goal is to find the minimum number of pigs needed to determine the poisonous bucket within the given constraints
+
+Approach:
+
+~ log_a_to_base_b Function:
+  ~ The log_a_to_base_b function is used to calculate the logarithm of 'a' to the base 'b'. It is used to solve the problem.
+  ~ It returns log2(a) / log2(b), which is essentially the logarithm of 'a' to the base 'b'.
+~ Main Function poorPigs:
+  ~ If n is equal to 1, it means there is only one pig, and you don't need to perform any tests. In this case, the function returns 0, as you already know which bucket contains poison.
+~ Calculate the Number of Tests:
+  ~ Calculate the number of tests needed by dividing Test (total time available for testing) by Die (time it takes for a pig to die). This gives you the number of tests you can perform.
+~ Calculate the Minimum Number of Pigs:
+  ~ To determine the minimum number of pigs required to find the poisonous bucket, you use the log_a_to_base_b function.
+  ~ Calculate x using log_a_to_base_b(n-1, t+1) + 1, where 'n-1' represents the total number of buckets minus one, and 't+1' represents the number of tests plus one.
+  ~ The idea behind this calculation is that you need to find the smallest integer 'x' such that (t+1)^x is greater than or equal to 'n-1'. This accounts for all possible combinations of buckets.
+  ~ The '+1' is added to ensure that if you have only one test, you still need at least one pig.
+~ Return the Minimum Number of Pigs:
+  ~ The function returns the calculated value of 'x', which represents the minimum number of pigs required to determine the poisonous bucket within the given time frame.
+
+Complexity Analysis:
+
+Time Complexity: The time complexity of this algorithm is O(1), as the calculations are performed in constant time.
+Space Complexity: The space complexity is O(1) since the function uses a constant amount of extra space regardless of the input size. It only stores a few integer variables and performs simple mathematical operations.
