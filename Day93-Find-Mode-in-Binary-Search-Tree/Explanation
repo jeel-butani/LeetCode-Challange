@@ -1,0 +1,35 @@
+501. Find Mode in Binary Search Tree
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem Statement:
+Given a binary search tree (BST), and the task is to find the mode(s) of the BST, which are the value(s) that appear most frequently.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Approach:
+
+Structure and Variables:
+~ The code defines a Solution class with variables to keep track of the maximum frequency, current frequency, and the precursor value while traversing the BST.
+~ It also maintains a result vector to store the modes.
+
+Main Function findMode:
+~ The findMode function takes the root of the BST as input and initializes the variables.
+~ It then calls the inorderTraversal function to perform an inorder traversal of the BST.
+
+Inorder Traversal inorderTraversal:
+~ The inorderTraversal function is a recursive function that performs an inorder traversal of the BST.
+~ It starts by checking if the current node is null. If so, it returns, as there is nothing to process for null nodes.
+~ The function proceeds by recursively visiting the left subtree first (in ascending order of values in a BST).
+~ For each node visited during the traversal, it checks if the value of the current node is equal to the precursor value.
+  ~ If it is equal, it increments the current frequency, indicating that the value has been encountered again.
+  ~ If it is not equal, it resets the current frequency to 1, indicating a new value.
+~ The function then compares the current frequency with the maximum frequency encountered so far.
+  ~ If the current frequency is greater than the maximum frequency, it clears the result vector and updates the maximum frequency. It also adds the current node's value to the result vector.
+  ~ If the current frequency is equal to the maximum frequency, it simply adds the current node's value to the result vector.
+~ The precursor value is updated to the current node's value.
+~ The function then recursively visits the right subtree to continue the inorder traversal.
+
+Return Result:
+~ The findMode function returns the result vector, which contains the mode(s) of the BST.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Complexity Analysis:
+
+Time Complexity: The time complexity of this algorithm is O(n), where n is the number of nodes in the BST. This is because the code performs an inorder traversal of the entire BST once.
+Space Complexity: The space complexity is O(h), where h is the height of the BST. This is due to the recursive call stack during the inorder traversal. In the worst case, for a skewed tree, the space complexity is O(n), but for a balanced tree, it is O(log n).
