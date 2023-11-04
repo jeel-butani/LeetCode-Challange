@@ -1,0 +1,23 @@
+2433. Find The Original Array of Prefix Xor
+
+Problem Statement:
+Given an array pref where each element represents the prefix XOR of an original array. The goal is to find the original array that leads to this given prefix XOR array.
+
+Approach:
+
+Main Function findArray:
+~ The findArray function takes an input vector pref that represents the prefix XOR array.
+~ It initializes an empty vector ans to store the original array.
+
+Iterative Calculation of Original Array:
+~ The algorithm iterates through each element in the prefix XOR array from left to right.
+~ To reconstruct the original array, it computes each element of the original array based on the difference between adjacent elements in the prefix XOR array.
+~ For the first element, ans[0] is set to the value of pref[0] since there is no preceding element.
+~ For subsequent elements at index i, ans[i] is computed as pref[i] XOR pref[i-1]. This is because the XOR operation is reversible; given A and B, you can find A XOR B and A XOR (A XOR B) to obtain B.
+
+Return Result:
+~ The function returns the ans vector, which represents the reconstructed original array.
+
+Complexity Analysis:
+Time Complexity: The time complexity of this algorithm is O(n), where n is the size of the pref array. The algorithm iterates through the prefix XOR array once to compute the original array.
+Space Complexity: The space complexity is O(n) because the function uses an additional vector ans to store the original array, which has the same size as the input prefix XOR array.
