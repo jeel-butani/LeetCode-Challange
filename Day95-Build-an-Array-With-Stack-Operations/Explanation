@@ -1,0 +1,33 @@
+1441. Build an Array With Stack Operations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem Statement:
+
+Given a target array of integers and a positive integer n.Need to construct a sequence of push and pop operations to create the target array from an initially empty stack.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Approach:
+
+Initialization:
+~ Create an empty list l1 to store the sequence of push and pop operations.
+~ Initialize an empty stack st.
+
+Push Elements to Stack:
+~ Start from n and iterate backwards to 1. Push each integer from n down to 1 onto the stack. This represents the initial state of the stack.
+
+Build the Target Array:
+~ Initialize an index j to 0 to keep track of the current position in the target array.
+~ Use a while loop to iterate until j reaches the end of the target array.
+~ Within the loop, check if the stack is not empty.
+~ If the top element of the stack is equal to the current element in the target array at index j, it means you can perform a "Push" operation to match the current element in the target.
+~ In this case, add "Push" to the l1 list to indicate a push operation and increment j to move to the next element in the target.
+~ If the top element of the stack is not equal to the current element in the target array, you need to perform a "Push" followed by a "Pop" operation.
+~ In this case, add "Push" and "Pop" to the l1 list, as you push an element onto the stack and immediately pop it without matching the current element in the target. This ensures that you maintain the correct 
+  sequence of push and pop operations.
+~ Continue this process until you have matched all elements in the target array.
+
+Return Result:
+~ Return the l1 list, which represents the sequence of push and pop operations required to build the target array from an initially empty stack.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Complexity Analysis:
+
+Time Complexity: The time complexity of this algorithm is O(n), where n is the maximum value in the target array. This is because you iterate through the values from n down to 1.
+Space Complexity: The space complexity is O(n), as you use a stack to store n elements and a list to store the sequence of push and pop operations. In the worst case, both the stack and the list may have a size of n.
