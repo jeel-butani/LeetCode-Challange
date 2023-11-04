@@ -1,0 +1,31 @@
+1356. Sort Integers by The Number of 1 Bits
+
+Problem Statement:
+Given an array of integers. The goal is to sort the array such that the integers are arranged in ascending order based on two criteria:
+1) First, they should be sorted by the number of 1 bits in their binary representation.
+2) If two integers have the same number of 1 bits, they should be sorted in ascending order.
+
+Approach:
+
+countBit Function:
+~ The countBit function is used to count the number of 1 bits in the binary representation of an integer.
+~ It initializes a counter cnt to zero and iteratively uses the bitwise AND operation to count the 1 bits by repeatedly clearing the rightmost set bit of the integer.
+~ The function returns the count of 1 bits.
+
+comp Function:
+~ The comp function is a comparison function used for sorting integers.
+~ It calculates the number of 1 bits for two integers, x and y, using the countBit function.
+~ If the number of 1 bits in x and y is equal, it compares the integers themselves and returns true if x is less than y.
+~ If the number of 1 bits is different, it returns true if x has fewer 1 bits than y.
+
+Main Function sortByBits:
+~ The sortByBits function takes an input vector arr of integers.
+~ It sorts the vector using the custom comparison function comp defined above. This results in sorting the integers by the number of 1 bits in their binary representation and, in case of a tie, by the integer values themselves.
+
+Return Result:
+~ The function returns the sorted array.
+
+Complexity Analysis:
+
+Time Complexity: The time complexity of this algorithm is O(n * log n), where n is the number of integers in the input array. The primary time-consuming operation is the sorting step.
+Space Complexity: The space complexity is O(1) since the function uses only a constant amount of extra space. It does not use additional data structures that depend on the input size.
