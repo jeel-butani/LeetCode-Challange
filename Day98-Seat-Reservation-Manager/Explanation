@@ -1,0 +1,33 @@
+1845. Seat Reservation Manager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem Statement:
+
+Tasked with designing a seat reservation manager for a venue with a total of 'n' seats. Goal is to implement a class, SeatManager, which provides the following functionalities:
+~ SeatManager(int n): Initializes the seat manager with 'n' seats and assigns each seat a unique number from 1 to 'n'. These seats are initially available for reservation.
+~ reserve(): Reserves and returns the seat with the smallest number available. After reserving a seat, it is no longer available for future reservations.
+~ unreserve(int seatNumber): Unreserves the seat with the given seat number, making it available for future reservations.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Approach:
+
+Initialization:
+~ Create a priority queue (pq) to store the seat numbers.
+~ In the constructor SeatManager(int n), iterate from 1 to 'n' and add each seat number to the priority queue. This initializes the priority queue with all seats in ascending order.
+
+Reserve a Seat:
+~ When the reserve() function is called, pop the smallest seat number from the priority queue using pq.poll() and return it as the reserved seat. This ensures that the smallest available seat is assigned and removed from future reservation options.
+
+Unreserve a Seat:
+~ When the unreserve(int seatNumber) function is called, add the given seat number back to the priority queue using pq.add(seatNumber). This makes the seat available for future reservations.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Complexity Analysis:
+
+Time Complexity:
+~ The time complexity of initializing the SeatManager is O(n), where 'n' is the number of seats, as you iterate through all the seats to add them to the priority queue.
+~ Reserving a seat (reserve()) and unreserving a seat (unreserve()) both have a time complexity of O(log n), as these operations involve priority queue operations.
+
+Space Complexity:
+
+The space complexity is O(n) because you use a priority queue to store 'n' seat numbers.
+
+
+
